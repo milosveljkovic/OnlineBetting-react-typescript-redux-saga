@@ -6,6 +6,7 @@ import {AppState} from '../../store/reducers/rootReducer';
 import {fetchFootballMatches} from '../../store/actions/footballActions';
 import {Football} from '../../models/Football';
 import {MySpinner} from '../Spinner/Spinner';
+import List from '../ListOfMatches/List'
 
 interface Props{
     fetchFootballMatches:Function,
@@ -29,19 +30,19 @@ class FootballPage extends React.Component<Props,State>{
 
     render(){
         return(
-            <div style={{textAlign:"center",marginTop:"50px",width:"100%",height:"100%"}} > 
-                <h1>FootballPage</h1>
-                {this.props.football_matches.length===1?
-                <MySpinner/>: this.props.football_matches.map((match)=>{
-                    console.log(match);
-                    return (
-                    <div key={match.title}
-                    style={{boxShadow:"0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",marginTop:"20px",borderRadius:"10px"}}>
-                    <h1>{match.title}</h1> 
-                    </div>
-                    )
-                })
+            <div style={{textAlign:"center",marginTop:"60px",width:"100%",height:"100%",position:"absolute",
+                         display:"table", clear: "both",  content:""}}>
+                <h1>Football</h1>
+                <div style={{ float:"left",width:"10%", padding:"10px",height:"500px"}}>
+                    
+                </div>
+                {
+                this.props.football_matches.length===1?
+                <MySpinner/> : <List match_list={this.props.football_matches}/>
                 }
+                <div style={{ float:"left",width:"30%", padding:"10px",height:"500px"}}>
+                    <h3>e-Ticket</h3>
+                </div>
             </div>
         )
     }

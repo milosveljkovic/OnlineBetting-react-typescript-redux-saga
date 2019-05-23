@@ -8,11 +8,18 @@ const initialState:Football[]=[
     {
         id:4,
         title:"ZVEZDA-PARTIZAN",
-        odds:
-        [
+        odds:[
             {
                 value:1,
+                finalscore:"1"
+            },
+            {
+                value:2,
                 finalscore:"X"
+            },
+            {
+                value:3,
+                finalscore:"2"
             }
         ]
     }

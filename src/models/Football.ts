@@ -7,6 +7,14 @@ export interface Football {
         {
             value:number,
             finalscore:string
+        },
+        {
+            value:number,
+            finalscore:string
+        },
+        {
+            value:number,
+            finalscore:string
         }
     ]
 }
