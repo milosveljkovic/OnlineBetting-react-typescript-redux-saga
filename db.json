@@ -1,0 +1,69 @@
+{
+    "football":
+    [
+        {
+            "id":1,
+            "title":"Barcelona - Real Madrid",
+            "odds":
+            [
+                {
+                    "value":1.9,
+                    "finalscore":"1"
+                },
+                {
+                    "value":2,
+                    "finalscore":"X"
+                },
+                {
+                    "value":2.5,
+                    "finalscore":"2"
+                } 
+            ]
+        },
+        {
+            "id":2,
+            "title":"Manchester United - Ajax",
+            "odds":
+            [
+                {
+                    "value":2.9,
+                    "finalscore":"1"
+                },
+                {
+                    "value":2.5,
+                    "finalscore":"X"
+                },
+                {
+                    "value":3.5,
+                    "finalscore":"2"
+                } 
+            ]
+        }
+    ],
+    "basketball":
+    [
+        {
+            "id":1,
+            "title":"Golden State Warriors - Milwaukee Bucks",
+            "odds":
+            [
+                {
+                    "value":1.9,
+                    "finalscore":"1"
+                },
+                {
+                    "value":12.5,
+                    "finalscore":"X"
+                },
+                {
+                    "value":3.5,
+                    "finalscore":"2"
+                } 
+            ]
+        },
+        {
+
+        }
+    ]
+    
+}
