@@ -2,24 +2,28 @@
 import {Action} from 'redux';
 
 import {SHOW_FOOTBALL_MATCHES,IshowFootballMatches} from '../actions/footballActions'
+
 import {Football} from '../../models/Football'
 
 const initialState:Football[]=[
     {
         id:4,
-        title:"ZVEZDA-PARTIZAN",
+        title:"DUBOCICA-GORNJI JOVANOVAC",
         odds:[
             {
                 value:1,
-                finalscore:"1"
+                finalscore:"1",
+                includedodds:false
             },
             {
                 value:2,
-                finalscore:"X"
+                finalscore:"X",
+                includedodds:false
             },
             {
                 value:3,
-                finalscore:"2"
+                finalscore:"2",
+                includedodds:false
             }
         ]
     }

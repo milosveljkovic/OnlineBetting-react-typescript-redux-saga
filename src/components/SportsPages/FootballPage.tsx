@@ -7,6 +7,7 @@ import {fetchFootballMatches} from '../../store/actions/footballActions';
 import {Football} from '../../models/Football';
 import {MySpinner} from '../Spinner/Spinner';
 import List from '../ListOfMatches/List'
+import Ticket from '../Ticket/Ticket'
 
 interface Props{
     fetchFootballMatches:Function,
@@ -40,8 +41,8 @@ class FootballPage extends React.Component<Props,State>{
                 this.props.football_matches.length===1?
                 <MySpinner/> : <List match_list={this.props.football_matches}/>
                 }
-                <div style={{ float:"left",width:"30%", padding:"10px",height:"500px"}}>
-                    <h3>e-Ticket</h3>
+                <div style={{ float:"left",width:"30%", padding:"10px",height:"500px",borderColor:"red"}}>
+                    <Ticket></Ticket>
                 </div>
             </div>
         )

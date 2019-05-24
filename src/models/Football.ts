@@ -6,15 +6,18 @@ export interface Football {
     [
         {
             value:number,
-            finalscore:string
+            finalscore:string,
+            includedodds:boolean
         },
         {
             value:number,
-            finalscore:string
+            finalscore:string,
+            includedodds:boolean
         },
         {
             value:number,
-            finalscore:string
+            finalscore:string,
+            includedodds:boolean
         }
     ]
 }

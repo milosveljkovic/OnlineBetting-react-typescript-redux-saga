@@ -1,69 +1,95 @@
 {
-    "football":
-    [
+  "football": [
+    {
+      "id": 1,
+      "title": "Barcelona - Real Madrid",
+      "odds": [
         {
-            "id":1,
-            "title":"Barcelona - Real Madrid",
-            "odds":
-            [
-                {
-                    "value":1.9,
-                    "finalscore":"1"
-                },
-                {
-                    "value":2,
-                    "finalscore":"X"
-                },
-                {
-                    "value":2.5,
-                    "finalscore":"2"
-                } 
-            ]
+          "value": 1.9,
+          "finalscore": "1",
+          "includedodds": false
         },
         {
-            "id":2,
-            "title":"Manchester United - Ajax",
-            "odds":
-            [
-                {
-                    "value":2.9,
-                    "finalscore":"1"
-                },
-                {
-                    "value":2.5,
-                    "finalscore":"X"
-                },
-                {
-                    "value":3.5,
-                    "finalscore":"2"
-                } 
-            ]
-        }
-    ],
-    "basketball":
-    [
-        {
-            "id":1,
-            "title":"Golden State Warriors - Milwaukee Bucks",
-            "odds":
-            [
-                {
-                    "value":1.9,
-                    "finalscore":"1"
-                },
-                {
-                    "value":12.5,
-                    "finalscore":"X"
-                },
-                {
-                    "value":3.5,
-                    "finalscore":"2"
-                } 
-            ]
+          "value": 2,
+          "finalscore": "X",
+          "includedodds": false
         },
         {
-
+          "value": 2.5,
+          "finalscore": "2",
+          "includedodds": true
         }
-    ]
-    
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Manchester United - Ajax",
+      "odds": [
+        {
+          "value": 2.9,
+          "finalscore": "1",
+          "includedodds": true
+        },
+        {
+          "value": 2.5,
+          "finalscore": "X",
+          "includedodds": true
+        },
+        {
+          "value": 3.5,
+          "finalscore": "2",
+          "includedodds": false
+        }
+      ]
+    }
+  ],
+  "basketball": [
+    {
+      "id": 1,
+      "title": "Golden State Warriors - Milwaukee Bucks",
+      "odds": [
+        {
+          "value": 1.9,
+          "finalscore": "1",
+          "includedodds": false
+        },
+        {
+          "value": 12.5,
+          "finalscore": "X",
+          "includedodds": false
+        },
+        {
+          "value": 3.5,
+          "finalscore": "2",
+          "includedodds": false
+        }
+      ]
+    }
+  ],
+  "ticket": [
+    {
+      "id": 1,
+      "title": "naziv-meca",
+      "finalscore": "X",
+      "odd": 10
+    },
+    {
+      "id": 2,
+      "title": "Barcelona - Real Madrid",
+      "finalscore": "2",
+      "odd": 2.5
+    },
+    {
+      "id": 3,
+      "title": "Manchester United - Ajax",
+      "finalscore": "1",
+      "odd": 2.9
+    },
+    {
+      "id": 4,
+      "title": "Manchester United - Ajax",
+      "finalscore": "X",
+      "odd": 2.5
+    }
+  ]
 }
