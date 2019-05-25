@@ -1,5 +1,5 @@
 export interface TicketMatch{
-    id:number,
+    id:string,
     title:string,
     finalscore:string,
     odd:number

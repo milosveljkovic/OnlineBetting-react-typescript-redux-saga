@@ -1,6 +1,6 @@
 import {Football} from '../models/Football';
 
-const url='http://localhost:8001/football';
+const url='http://localhost:8000/football';
 
 export function getAllFootballMatches(){
     return fetch(url)

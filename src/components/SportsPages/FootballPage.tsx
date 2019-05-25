@@ -56,7 +56,6 @@ function mapDispatcherToProps(dispatch:Dispatch<Action>){
 }
 
 function mapStateToProps(state:AppState){
-    console.log(state);
     return{
         football_matches: state.football_matches
     }
