@@ -15,7 +15,7 @@ interface State{
 class List extends React.Component<Props,State>{
     render(){
         return(
-            <div style={{ float:"left",width:"60%", padding:"10px"}}> 
+            <div style={{ float:"left",width:"40%", padding:"10px"}}> 
                 <div style={{boxShadow:"0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
                      marginTop:"20px",marginLeft:"40px",marginRight:"40px",textAlign:"center",
                      borderRadius:"5px",height:"25px",minWidth:"500px"}}>

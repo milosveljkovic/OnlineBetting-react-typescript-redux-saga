@@ -11,6 +11,7 @@ class Navigationbar extends React.Component{
                         <NavDropdown title="Sports" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="/football" >Football</NavDropdown.Item>
                         </NavDropdown>
+                        <Nav.Link href="ticket">My Ticket</Nav.Link>
                     </Nav>
                 </Navbar>
             </div>

@@ -10,6 +10,8 @@ import {rootSaga} from './store/sagas/rootSaga';
 import rootReducer from "./store/reducers/rootReducer"
 import FootballPage from './components/SportsPages/FootballPage'
 import Navigationbar from './components/Navbar/Navigationbar';
+import Ticket from './components/Ticket/Ticket';
+import Home from './components/Home/Home'
 
 const sagaMiddleware=createSagaMiddleware();
 
@@ -30,7 +32,9 @@ class App extends React.Component {
       <BrowserRouter>
         <Navigationbar></Navigationbar>
         <Switch>
+          <Route path="/home" component={Home}/>
           <Route path="/football" component={FootballPage}/>
+          <Route path="/ticket" component={Ticket}/>
         </Switch>
       </BrowserRouter>
     </div>

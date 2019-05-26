@@ -4,8 +4,8 @@ import {TicketMatch} from '../../models/TicketMatch'
 
 export const POST_MATCH_TO_TICKET="POST_MATCH_TO_TICKET";
 export const DELETE_MATCH_FROM_TICKET="DELETE_MATCH_FROM_TICKET";
-export const SHOW_TICKET="SHOW_TICKET";
-
+export const SHOW_TICKET_MATCHES="SHOW_TICKET_MATCHES";
+export const FETCH_TICKET_MATCHES="FETCH_TICKET_MATCHES";
 
 export interface IpostMatchToTicket extends Action{
     ticketMatch:TicketMatch
@@ -15,8 +15,11 @@ export interface IdeleteMatchFromTicket extends Action{
     ticketMatchId:string
 }
 
-export interface IshowTicket extends Action{
+export interface IshowTicketMatches extends Action{
     ticketMatches:TicketMatch[]
+}
+
+export interface IfetchTicketMatches extends Action{
 }
 
 export function postMatchToTicket(ticketMatch:TicketMatch):IpostMatchToTicket{
@@ -33,9 +36,15 @@ export function deleteMatchFromTicket(ticketMatchId:string):IdeleteMatchFromTick
     }
 }
 
-export function showTicket(ticketMatches:TicketMatch[]):IshowTicket{
+export function showTicketMatches(ticketMatches:TicketMatch[]):IshowTicketMatches{
     return{
-        type:SHOW_TICKET,
+        type:SHOW_TICKET_MATCHES,
         ticketMatches:ticketMatches
+    }
+}
+
+export function fetchTicketMatches():IfetchTicketMatches{
+    return{
+        type:FETCH_TICKET_MATCHES
     }
 }
