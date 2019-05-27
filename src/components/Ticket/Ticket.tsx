@@ -1,3 +1,5 @@
+import '../../design/myDesign.css'
+
 import { Container } from 'react-bootstrap';
 
 import React, { Dispatch } from 'react';
@@ -34,32 +36,30 @@ class Ticket extends React.Component<Props,State>{
 
     render(){
         return(
-            <div style={{textAlign:"center",marginTop:"60px",width:"100%",height:"100%",position:"absolute",
-                         display:"table", clear: "both",  content:""}}>
-                <div style={{ float:"left",width:"30%", padding:"10px",height:"500px"}}>
+            <div className="main">
+                <h1 className="pageTitle ticketBackground" >E - Ticket</h1>
+                <div className="sideContainer ticketBackground">
                     
-                    </div>
-                    <div style={{ float:"left",width:"40%",height:"100%", padding:"10px",borderRadius:"5px",borderColor:"#B6B2B2", 
-                                borderStyle:"solid"}}>
-                    <h1>e - Ticket</h1>
-                    <Container>
-                    <h5>Odd: {this.getFinalOdd()}</h5>
-                    </Container>
-                    <Container>
-                        {   
-                            this.props.ticket.map((ticketmatch)=>{
-                            return (
-                                <div key={ticketmatch.title}>
-                                    <p>{ticketmatch.title}</p>
-                                </div>
-                            )
-                        })
-                        }
-                    </Container>
                 </div>
-                <div style={{ float:"left",width:"30%", padding:"10px",height:"500px"}}>
+                <div className="contentContainer " >
+                <Container>
+                <h4 style={{marginTop:"50px"}}>Odd: {this.getFinalOdd()}</h4>
+                </Container>
+                <Container>
+                    {   
+                        this.props.ticket.map((ticketmatch)=>{
+                        return (
+                            <div key={ticketmatch.id}>
+                                <p>{ticketmatch.title}</p>
+                            </div>
+                        )
+                    })
+                    }
+                </Container>
+                </div>
+                <div className="sideContainer ticketBackground">
                     
-                 </div>
+                </div>
             </div>
         )
     }

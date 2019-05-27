@@ -2,10 +2,52 @@
   "football": [
     {
       "id": 1,
-      "title": "Barcelona - Real Madrid",
+      "title": "Roma - Porto",
       "odds": [
         {
           "value": 1.9,
+          "finalscore": "1",
+          "includedodds": false
+        },
+        {
+          "value": 2.5,
+          "finalscore": "X",
+          "includedodds": false
+        },
+        {
+          "value": 3.5,
+          "finalscore": "2",
+          "includedodds": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Manchester United - Paris",
+      "odds": [
+        {
+          "value": 3.1,
+          "finalscore": "1",
+          "includedodds": false
+        },
+        {
+          "value": 2.2,
+          "finalscore": "X",
+          "includedodds": false
+        },
+        {
+          "value": 1.5,
+          "finalscore": "2",
+          "includedodds": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Tottenham - Dortmund",
+      "odds": [
+        {
+          "value": 2.5,
           "finalscore": "1",
           "includedodds": false
         },
@@ -15,15 +57,36 @@
           "includedodds": false
         },
         {
-          "value": 2.5,
+          "value": 2,
           "finalscore": "2",
           "includedodds": false
         }
       ]
     },
     {
-      "id": 2,
-      "title": "Manchester United - Ajax",
+      "id": 4,
+      "title": "Lyon - Barcelona",
+      "odds": [
+        {
+          "value": 5.6,
+          "finalscore": "1",
+          "includedodds": false
+        },
+        {
+          "value": 3.3,
+          "finalscore": "X",
+          "includedodds": false
+        },
+        {
+          "value": 1.4,
+          "finalscore": "2",
+          "includedodds": false
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Ajax - Real",
       "odds": [
         {
           "value": 2.9,
@@ -31,12 +94,54 @@
           "includedodds": false
         },
         {
-          "value": 2.5,
+          "value": 2,
           "finalscore": "X",
           "includedodds": false
         },
         {
-          "value": 3.5,
+          "value": 1.7,
+          "finalscore": "2",
+          "includedodds": false
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Liverpool - Bayern",
+      "odds": [
+        {
+          "value": 2.6,
+          "finalscore": "1",
+          "includedodds": false
+        },
+        {
+          "value": 1.7,
+          "finalscore": "X",
+          "includedodds": false
+        },
+        {
+          "value": 2,
+          "finalscore": "2",
+          "includedodds": false
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Atletico - Juventus",
+      "odds": [
+        {
+          "value": 3.6,
+          "finalscore": "1",
+          "includedodds": false
+        },
+        {
+          "value": 2.8,
+          "finalscore": "X",
+          "includedodds": false
+        },
+        {
+          "value": 1.88,
           "finalscore": "2",
           "includedodds": false
         }
@@ -46,7 +151,112 @@
   "basketball": [
     {
       "id": 1,
-      "title": "Golden State Warriors - Milwaukee Bucks",
+      "title": "Denver - Brooklyn",
+      "odds": [
+        {
+          "value": 3.2,
+          "finalscore": "1",
+          "includedodds": false
+        },
+        {
+          "value": 10.5,
+          "finalscore": "X",
+          "includedodds": false
+        },
+        {
+          "value": 1.5,
+          "finalscore": "2",
+          "includedodds": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "New Orleans - Chicago",
+      "odds": [
+        {
+          "value": 1.35,
+          "finalscore": "1",
+          "includedodds": false
+        },
+        {
+          "value": 17.5,
+          "finalscore": "X",
+          "includedodds": false
+        },
+        {
+          "value": 4.5,
+          "finalscore": "2",
+          "includedodds": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Washington - Milwaukee",
+      "odds": [
+        {
+          "value": 2.3,
+          "finalscore": "1",
+          "includedodds": false
+        },
+        {
+          "value": 10.7,
+          "finalscore": "X",
+          "includedodds": false
+        },
+        {
+          "value": 2.1,
+          "finalscore": "2",
+          "includedodds": false
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Charlotte - Dallas",
+      "odds": [
+        {
+          "value": 1.85,
+          "finalscore": "1",
+          "includedodds": false
+        },
+        {
+          "value": 14.4,
+          "finalscore": "X",
+          "includedodds": false
+        },
+        {
+          "value": 3.6,
+          "finalscore": "2",
+          "includedodds": false
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Pheonix - Utah",
+      "odds": [
+        {
+          "value": 4.2,
+          "finalscore": "1",
+          "includedodds": false
+        },
+        {
+          "value": 11.7,
+          "finalscore": "X",
+          "includedodds": false
+        },
+        {
+          "value": 2.1,
+          "finalscore": "2",
+          "includedodds": false
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Houston - Sacramento",
       "odds": [
         {
           "value": 1.9,
@@ -54,12 +264,96 @@
           "includedodds": false
         },
         {
-          "value": 12.5,
+          "value": 10.5,
           "finalscore": "X",
           "includedodds": false
         },
         {
-          "value": 3.5,
+          "value": 2.3,
+          "finalscore": "2",
+          "includedodds": false
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "San Antonio - Golden State",
+      "odds": [
+        {
+          "value": 3.2,
+          "finalscore": "1",
+          "includedodds": false
+        },
+        {
+          "value": 22.5,
+          "finalscore": "X",
+          "includedodds": false
+        },
+        {
+          "value": 1.5,
+          "finalscore": "2",
+          "includedodds": false
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Boston - Cleveland",
+      "odds": [
+        {
+          "value": 2,
+          "finalscore": "1",
+          "includedodds": false
+        },
+        {
+          "value": 14.3,
+          "finalscore": "X",
+          "includedodds": false
+        },
+        {
+          "value": 2.9,
+          "finalscore": "2",
+          "includedodds": false
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "LA Lakers - Indiana",
+      "odds": [
+        {
+          "value": 1.66,
+          "finalscore": "1",
+          "includedodds": false
+        },
+        {
+          "value": 12.7,
+          "finalscore": "X",
+          "includedodds": false
+        },
+        {
+          "value": 4.9,
+          "finalscore": "2",
+          "includedodds": false
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Torronto - Philadelphia",
+      "odds": [
+        {
+          "value": 1.7,
+          "finalscore": "1",
+          "includedodds": false
+        },
+        {
+          "value": 16.8,
+          "finalscore": "X",
+          "includedodds": false
+        },
+        {
+          "value": 3,
           "finalscore": "2",
           "includedodds": false
         }

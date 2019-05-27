@@ -12,19 +12,17 @@ interface State{
 class Home extends React.Component<Props,State>{
 
     render(){
-
         return(
-            <div style={{textAlign:"center",marginTop:"60px",width:"100%",height:"100%",position:"absolute",
-                         display:"table", clear: "both",  content:""}}>
-                <div style={{ float:"left",width:"30%", padding:"10px",height:"100%"}}>
+            <div className="main">
+                <div className="sideContainer homeBackground">
                     
                 </div>
-                <div style={{ float:"left",width:"40%",height:"100%", padding:"10px"}}>
-                    <h1 style={{marginTop:"100px"}}>
-                    The blind chicken sometimes stabs
+                <div className="contentContainer">
+                    <h1 className="homeTitle">
+                    THE BLIND CHICKEN SOMETIMES STABS.
                     </h1>
                 </div>
-                <div style={{ float:"left",width:"30%", padding:"10px",height:"100%"}}>
+                <div className="sideContainer homeBackground">
                     
                  </div>
             </div>

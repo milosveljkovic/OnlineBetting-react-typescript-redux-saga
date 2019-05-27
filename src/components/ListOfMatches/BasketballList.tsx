@@ -1,24 +1,24 @@
 import '../../design/myDesign.css'
 
 import React from 'react';
-import {Football} from '../../models/Football'
+import {Basketball} from '../../models/Basketball'
 import { Container, Row,Col } from 'react-bootstrap';
 
-import ButtonOdd from '../Button/ButtonOdd'
+import ButtonOddBasketball from '../Button/ButtonOddBasketball'
 
 interface Props{
-    match_list:Football[]
+    basketball_match_list:Basketball[]
 }
 
 interface State{
 
 }
 
-class List extends React.Component<Props,State>{
+class BasketballList extends React.Component<Props,State>{
     render(){
         return(
-            <div className="contentContainer "> 
-                <div className="dataContainer dataContainerGreenShadow">
+            <div className="contentContainer"> 
+                <div className="dataContainer dataContainerOrangeShadow">
                     <Container>
                         <Row>
                             <Col xs={6}>Home - Away</Col>
@@ -29,20 +29,20 @@ class List extends React.Component<Props,State>{
                     </Container>
                 </div>
                 {
-                this.props.match_list.map((match)=>{
+                this.props.basketball_match_list.map((match)=>{
                    return (
-                        <div key={match.title} className="dataContainer dataContainerGreenShadow">
+                        <div key={match.title} className="dataContainer dataContainerOrangeShadow">
                             <Container>
                                 <Row>
                                     <Col xs={6}>{match.title}</Col>
                                     <Col xs={2}>
-                                        <ButtonOdd match={match} position={0}/>
+                                        <ButtonOddBasketball match={match} position={0}/>
                                     </Col>
                                     <Col xs={2}>
-                                        <ButtonOdd match={match} position={1}/>
+                                        <ButtonOddBasketball match={match} position={1}/>
                                     </Col>
                                     <Col xs={2}>
-                                        <ButtonOdd match={match} position={2}/>
+                                        <ButtonOddBasketball match={match} position={2}/>
                                     </Col>
                                 </Row>
                             </Container>
@@ -55,4 +55,4 @@ class List extends React.Component<Props,State>{
     }
 }
 
-export default List;
+export default BasketballList;

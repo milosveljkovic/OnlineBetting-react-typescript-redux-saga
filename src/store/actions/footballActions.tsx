@@ -4,7 +4,7 @@ import {Football} from '../../models/Football';
 
 export const SHOW_FOOTBALL_MATCHES="SHOW_FOOTBALL_MATCHES";
 export const FETCH_FOOTBALL_MATCHES="FETCH_FOOTBALL_MATCHES";
-export const UPDATE_MATCH="UPDATE_MATCH";
+export const UPDATE_FOOTBALL_MATCH="UPDATE_FOOTBALL_MATCH";
 
 export interface IshowFootballMatches extends Action{
     football_matches:Football[]
@@ -14,8 +14,8 @@ export interface IfetchFootballMatches extends Action{
     
 }
 
-export interface IupdateMatch extends Action{
-    payload:Football
+export interface IupdateFootballMatch extends Action{
+    match:Football
 }
 
 export function showFootballMatches(football_matches:Football[]):IshowFootballMatches{
@@ -31,9 +31,9 @@ export function fetchFootballMatches():IfetchFootballMatches{
     }
 }
 
-export function updateMatch(match:Football):IupdateMatch{
+export function updateFootballMatch(match:Football):IupdateFootballMatch{  //update footballMatch
     return{
-        type:UPDATE_MATCH,
-        payload:match
+        type:UPDATE_FOOTBALL_MATCH,
+        match:match
     }
 }

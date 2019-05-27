@@ -9,6 +9,7 @@ import {rootSaga} from './store/sagas/rootSaga';
 
 import rootReducer from "./store/reducers/rootReducer"
 import FootballPage from './components/SportsPages/FootballPage'
+import BasketballPage from './components/SportsPages/BasketballPage'
 import Navigationbar from './components/Navbar/Navigationbar';
 import Ticket from './components/Ticket/Ticket';
 import Home from './components/Home/Home'
@@ -34,6 +35,7 @@ class App extends React.Component {
         <Switch>
           <Route path="/home" component={Home}/>
           <Route path="/football" component={FootballPage}/>
+          <Route path="/basketball" component={BasketballPage}/>
           <Route path="/ticket" component={Ticket}/>
         </Switch>
       </BrowserRouter>

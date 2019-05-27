@@ -1,10 +1,12 @@
+import '../../design/myDesign.css'
+
 import React from 'react';
 
 import {Spinner} from 'react-bootstrap';
 
 export const MySpinner= ()=>{
     return (
-        <div style={{ float:"left",width:"40%", padding:"10px"}}>
+        <div className="contentContainer">
             <Spinner animation="border" role="status">
                 <span className="sr-only">Loading...</span>
             </Spinner>

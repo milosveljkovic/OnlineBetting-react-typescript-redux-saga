@@ -5,27 +5,27 @@ import {Action } from 'redux';
 import {connect} from 'react-redux';
 
 import { Button } from 'react-bootstrap';
-import {Football} from '../../models/Football';
+import {Basketball} from '../../models/Basketball';
 import {TicketMatch} from '../../models/TicketMatch';
 import { AppState } from '../../store/reducers/rootReducer';
 
-import {updateFootballMatch} from '../../store/actions/footballActions'
+import {updateBasketballMatch} from '../../store/actions/basketballActions'
 import {postMatchToTicket,deleteMatchFromTicket} from '../../store/actions/ticketActions';
 
 interface Props{
     position:number,
-    match:Football,
-    updateFootballMatch:Function,
+    match:Basketball,
+    updateBasketballMatch:Function,
     postMatchToTicket:Function,
     deleteMatchFromTicket:Function
 }
 
 interface State{
-    match:Football,
+    match:Basketball,
     ticketMatch:TicketMatch
 }
 
-class ButtonOdd extends React.Component<Props,State>{
+class ButtonOddBasketball extends React.Component<Props,State>{
 
     constructor(props:Props){
         super(props);
@@ -40,7 +40,7 @@ class ButtonOdd extends React.Component<Props,State>{
         }
     }
 
-    setTicketMatch=(match:Football)=>{
+    setTicketMatch=(match:Basketball)=>{
         var ticketMatch=this.state.ticketMatch;
         ticketMatch.id=`${match.title}-${match.odds[this.props.position].finalscore}`
         ticketMatch.title=match.title;
@@ -58,15 +58,15 @@ class ButtonOdd extends React.Component<Props,State>{
             ticketMatch=this.setTicketMatch(this.props.match);
 
             this.props.postMatchToTicket(ticketMatch);
-            console.log("BUTTON ODD-POST")
+            console.log("BUTTON ODD BASKETBALL-POST")
 
         }else{
-            console.log("BUTTON ODD-DELETE")
+            console.log("BUTTON ODD BASKETBALL-DELETE")
             matchVar.odds[this.props.position].includedodds=false;
             this.props.deleteMatchFromTicket(`${this.props.match.title}-${this.props.match.odds[this.props.position].finalscore}`)
         }
         this.setState({match:matchVar});
-        this.props.updateFootballMatch(matchVar);
+        this.props.updateBasketballMatch(matchVar);
     }
 
     render(){
@@ -78,11 +78,11 @@ class ButtonOdd extends React.Component<Props,State>{
             <div>
             {
                 match.odds[position].includedodds===false?
-                <Button  onClick={this.handleClick}variant="outline-success"style={{backgroundColor:"#FFFFFF"}}>
+                <Button  onClick={this.handleClick}  variant="outline-warning" style={{backgroundColor:"#FFFFFF"}}>
                     {this.props.match.odds[position].value}
                 </Button>
                 :
-                <Button  onClick={this.handleClick}variant="outline-success"style={{backgroundColor:"#92D67D"}}>
+                <Button  onClick={this.handleClick}  variant="outline-warning" style={{backgroundColor:"#e7874f"}}>
                     {match.odds[position].value}
                 </Button>
             }
@@ -93,7 +93,7 @@ class ButtonOdd extends React.Component<Props,State>{
 
 function mapDispatcherToProps(dispatch:Dispatch<Action>){
     return{
-        updateFootballMatch:(match:Football)=>dispatch(updateFootballMatch(match)),
+        updateBasketballMatch:(match:Basketball)=>dispatch(updateBasketballMatch(match)),
         postMatchToTicket:(ticketMatch:TicketMatch)=>dispatch(postMatchToTicket(ticketMatch)),
         deleteMatchFromTicket:(ticketMatchId:string)=>dispatch(deleteMatchFromTicket(ticketMatchId))
     }
@@ -102,8 +102,8 @@ function mapDispatcherToProps(dispatch:Dispatch<Action>){
 function mapStateToProps(state:AppState){
     console.log(state);
     return{
-        football_matches: state.football_matches
+        basketball_matches: state.basketball_matches
     }
 }
 
-export default connect(mapStateToProps,mapDispatcherToProps)(ButtonOdd);
+export default connect(mapStateToProps,mapDispatcherToProps)(ButtonOddBasketball);
