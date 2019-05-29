@@ -42,7 +42,7 @@ class ButtonOdd extends React.Component<Props,State>{
 
     setTicketMatch=(match:Football)=>{
         var ticketMatch=this.state.ticketMatch;
-        ticketMatch.id=`${match.title}-${match.odds[this.props.position].finalscore}`
+        ticketMatch.id=`${match.id}`
         ticketMatch.title=match.title;
         ticketMatch.finalscore=match.odds[this.props.position].finalscore;
         ticketMatch.odd=match.odds[this.props.position].value;
@@ -63,7 +63,7 @@ class ButtonOdd extends React.Component<Props,State>{
         }else{
             console.log("BUTTON ODD-DELETE")
             matchVar.odds[this.props.position].includedodds=false;
-            this.props.deleteMatchFromTicket(`${this.props.match.title}-${this.props.match.odds[this.props.position].finalscore}`)
+            this.props.deleteMatchFromTicket(`${this.props.match.id}`);
         }
         this.setState({match:matchVar});
         this.props.updateFootballMatch(matchVar);

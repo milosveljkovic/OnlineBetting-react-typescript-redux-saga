@@ -1,5 +1,4 @@
 import {Football} from '../models/Football';
-
 const url='http://localhost:8000/football';
 
 export function getAllFootballMatches(){

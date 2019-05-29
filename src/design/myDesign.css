@@ -61,6 +61,10 @@
   .dataContainerOrangeShadow{
   box-shadow:0 4px 8px 0 #e7874f, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
+
+  .dataContainerTickectShadow{
+    box-shadow:0 4px 8px 0 #B6B2B2, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
   
   .ticketBackground{
   background-color: #B6B2B2;

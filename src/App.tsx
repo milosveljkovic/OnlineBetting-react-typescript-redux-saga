@@ -30,9 +30,10 @@ class App extends React.Component {
   return (
     <Provider store={store}>
     <div>
+      <Navigationbar></Navigationbar>
       <BrowserRouter>
-        <Navigationbar></Navigationbar>
         <Switch>
+          <Route exact path="/" component={Home}/>
           <Route path="/home" component={Home}/>
           <Route path="/football" component={FootballPage}/>
           <Route path="/basketball" component={BasketballPage}/>
