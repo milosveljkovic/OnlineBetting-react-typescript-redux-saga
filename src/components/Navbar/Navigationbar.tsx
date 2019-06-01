@@ -13,6 +13,7 @@ class Navigationbar extends React.Component{
                             <NavDropdown.Item href="/basketball" >Basketball</NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Link href="ticket">My Ticket</Nav.Link>
+                        <Nav.Link href="mytickets">My Ticket</Nav.Link>
                     </Nav>
                 </Navbar>
             </div>

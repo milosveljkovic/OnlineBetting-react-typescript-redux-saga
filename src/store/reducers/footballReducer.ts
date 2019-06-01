@@ -1,33 +1,11 @@
 
 import {Action} from 'redux';
 
-import {SHOW_FOOTBALL_MATCHES,IshowFootballMatches} from '../actions/footballActions'
+import {SHOW_FOOTBALL_MATCHES,IshowFootballMatches, SET_FOOTBALL_MATCH_INITIAL_STATE, IsetFootballMatchInitialState} from '../actions/footballActions'
 
 import {Football} from '../../models/Football'
 
-const initialState:Football[]=[
-    {
-        id:4,
-        title:"DUBOCICA-GORNJI JOVANOVAC",
-        odds:[
-            {
-                value:1,
-                finalscore:"1",
-                includedodds:false
-            },
-            {
-                value:2,
-                finalscore:"X",
-                includedodds:false
-            },
-            {
-                value:3,
-                finalscore:"2",
-                includedodds:false
-            }
-        ]
-    }
-];
+const initialState:Football[]=[];
 
 export function footballReducer(state:Football[]=initialState,action:Action){
     switch(action.type){
@@ -36,6 +14,9 @@ export function footballReducer(state:Football[]=initialState,action:Action){
             const {football_matches}=action as IshowFootballMatches;
             state=[...football_matches];
             return [...football_matches];
+        case SET_FOOTBALL_MATCH_INITIAL_STATE:
+                const {football_matches_is}=action as IsetFootballMatchInitialState;
+            return [...football_matches_is]
         default:
             return state;
     }

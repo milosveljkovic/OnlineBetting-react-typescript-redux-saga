@@ -21,8 +21,7 @@ interface Props{
 }
 
 interface State{
-    match:Football,
-    ticketMatch:TicketMatch
+    buttonBackground:string
 }
 
 class ButtonOdd extends React.Component<Props,State>{
@@ -30,55 +29,50 @@ class ButtonOdd extends React.Component<Props,State>{
     constructor(props:Props){
         super(props);
         this.state={
-            match:this.props.match,
-            ticketMatch:{
-                id:"0",
-                title:"A",
-                finalscore:"X",
-                odd:2
-            }
+            buttonBackground:"#FFFFFF"
         }
     }
 
     setTicketMatch=(match:Football)=>{
-        var ticketMatch=this.state.ticketMatch;
-        ticketMatch.id=`${match.id}`
-        ticketMatch.title=match.title;
-        ticketMatch.finalscore=match.odds[this.props.position].finalscore;
-        ticketMatch.odd=match.odds[this.props.position].value;
+        var ticketMatch:TicketMatch={
+            id:`${match.id}-${match.odds[this.props.position].finalscore}`,
+            title:match.title,
+            finalscore:match.odds[this.props.position].finalscore,
+            odd:match.odds[this.props.position].value
+        }
         return ticketMatch;
     }
 
     handleClick=()=>{
-        var matchVar=this.state.match;
-        if(!this.state.match.odds[this.props.position].includedodds){
-            matchVar.odds[this.props.position].includedodds=true;
+        const {match,position} = this.props;
+        var matchVar=match;
+        if(!match.odds[position].includedodds){
+            matchVar.odds[position].includedodds=true;
 
-            var ticketMatch=this.state.ticketMatch;
-            ticketMatch=this.setTicketMatch(this.props.match);
+            var ticketMatch:TicketMatch;
+            ticketMatch=this.setTicketMatch(match);
 
             this.props.postMatchToTicket(ticketMatch);
-            console.log("BUTTON ODD-POST")
+            this.setState({buttonBackground:"#92D67D"});
 
         }else{
-            console.log("BUTTON ODD-DELETE")
-            matchVar.odds[this.props.position].includedodds=false;
-            this.props.deleteMatchFromTicket(`${this.props.match.id}`);
+            matchVar.odds[position].includedodds=false;
+            this.props.deleteMatchFromTicket(`${match.id}-${match.odds[position].finalscore}`)
+           this.setState({buttonBackground:"#FFFFFF"});
         }
-        this.setState({match:matchVar});
         this.props.updateFootballMatch(matchVar);
     }
 
     render(){
 
-        const {match}=this.state;
-        const {position}=this.props;
+        const {buttonBackground}=this.state;
+        const {position,match}=this.props;
 
         return(
             <div>
             {
                 match.odds[position].includedodds===false?
-                <Button  onClick={this.handleClick}variant="outline-success"style={{backgroundColor:"#FFFFFF"}}>
+                <Button  onClick={this.handleClick}variant="outline-success"style={{backgroundColor:buttonBackground}}>
                     {this.props.match.odds[position].value}
                 </Button>
                 :

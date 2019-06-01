@@ -1,7 +1,7 @@
 import {put} from 'redux-saga/effects';
 
-import {showFootballMatches} from '../actions/footballActions';
-import {getAllFootballMatches,updateFootballMatchOdds} from '../../services/football-service';
+import {showFootballMatches, IputFootballMatchInitialState, setFootballMatchInitialState} from '../actions/footballActions';
+import {getAllFootballMatches,updateFootballMatchOdds,putInitialStateFootballMatchService} from '../../services/football-service';
 import {IupdateFootballMatch} from '../actions/footballActions'
 
 export function* fetchFootballMatches(){
@@ -13,4 +13,9 @@ export function* fetchFootballMatches(){
 export function* updateFootballMatch(match:IupdateFootballMatch){
     console.log("update football-matches");
     yield updateFootballMatchOdds(match.match);
+}
+
+export function* putFootballMatchInitialState(matches:IputFootballMatchInitialState){
+    yield putInitialStateFootballMatchService(matches.football_matches_is);
+    yield put(setFootballMatchInitialState(matches.football_matches_is));
 }

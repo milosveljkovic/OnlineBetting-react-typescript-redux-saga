@@ -22,3 +22,18 @@ export function deleteMatchFromTicketService(ticketMatchId:string){
     };
     fetch(`${url}/${ticketMatchId}`,newTicketMatch).then((response)=>response.json())
 }
+
+export function setInitialTicketStateService(ticketMatches:TicketMatch[]){
+    var i=500
+    ticketMatches.map((match)=>{
+        setTimeout(()=>{
+            const newTicketMatch={
+            method:"delete",
+            body: JSON.stringify({id:match.id}),
+            headers:{'Content-Type':'application/json'},
+        };
+        fetch(`${url}/${match.id}`,newTicketMatch).then((response)=>response.json())}
+        
+        ,i+=500)
+    })
+}

@@ -18,7 +18,9 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
     "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8",
     "redux-saga": "^1.0.2",
+    "save-dev": "^2.0.0",
     "typescript": "3.4.5"
   },
   "scripts": {

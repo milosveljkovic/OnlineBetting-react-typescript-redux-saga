@@ -1,7 +1,7 @@
 import {put} from 'redux-saga/effects';
 
-import {showTicketMatches,IpostMatchToTicket,IdeleteMatchFromTicket} from '../actions/ticketActions'
-import {postTicketMatchService,getTicketMatchesService,deleteMatchFromTicketService} from '../../services/ticket-service'
+import {showTicketMatches,IpostMatchToTicket,IdeleteMatchFromTicket,setIntialState, IputIntialState} from '../actions/ticketActions'
+import {postTicketMatchService,getTicketMatchesService,deleteMatchFromTicketService,setInitialTicketStateService} from '../../services/ticket-service'
 
 export function* getTicketMatches(){
         const ticketMatches=yield getTicketMatchesService();
@@ -14,4 +14,9 @@ export function* postMachToTicket(ticketMatch:IpostMatchToTicket){
 
 export function* deleteMachFromTicket(ticketMatchId:IdeleteMatchFromTicket){
         yield deleteMatchFromTicketService(ticketMatchId.ticketMatchId);
+}
+
+export function* putInitialTicketState(ticketMatches:IputIntialState){
+        yield setInitialTicketStateService(ticketMatches.ticketMatches);
+        yield put(setIntialState());
 }

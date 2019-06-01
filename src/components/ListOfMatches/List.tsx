@@ -47,8 +47,8 @@ class List extends React.Component<Props,State>{
                                 </Row>
                             </Container>
                         </div> 
-                    )
-                })
+                        )
+                    })
                 }  
             </div>
         )

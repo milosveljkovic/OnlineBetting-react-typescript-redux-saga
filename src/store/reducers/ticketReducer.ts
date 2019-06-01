@@ -1,6 +1,6 @@
 import {Action} from 'redux';
 
-import {SHOW_TICKET_MATCHES, IshowTicketMatches} from '../actions/ticketActions';
+import {SHOW_TICKET_MATCHES, IshowTicketMatches, SET_INITIAL_STATE} from '../actions/ticketActions';
 
 import {TicketMatch} from '../../models/TicketMatch'
 
@@ -14,6 +14,9 @@ export function ticketReducer(state:TicketMatch[]=initialState,action:Action){
             const {ticketMatches}=action as IshowTicketMatches;
             state=[...ticketMatches];
             return state;
+        case SET_INITIAL_STATE:
+            console.log("SET_INITIAL_STATE");
+            return []
         default:
             return state;
     }

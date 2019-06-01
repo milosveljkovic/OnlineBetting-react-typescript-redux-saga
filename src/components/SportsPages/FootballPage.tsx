@@ -3,13 +3,11 @@ import {Action } from 'redux';
 import {connect} from 'react-redux';
 import {AppState} from '../../store/reducers/rootReducer';
 import '../../design/myDesign.css';
-import {fetchFootballMatches} from '../../store/actions/footballActions';
 import {Football} from '../../models/Football';
 import {MySpinner} from '../Spinner/Spinner';
 import List from '../ListOfMatches/List'
 
 interface Props{
-    fetchFootballMatches:Function,
     football_matches:Football[]
 }
 
@@ -19,11 +17,10 @@ interface State{
 
 class FootballPage extends React.Component<Props,State>{
 
-    componentDidMount(){
-        this.props.fetchFootballMatches();
-    }
-
     render(){
+
+        const {football_matches}=this.props;
+
         return(
             <div className="main">
                 <h1 className="pageTitle footballBackground" >FOOTBALL</h1>
@@ -31,8 +28,8 @@ class FootballPage extends React.Component<Props,State>{
                     
                 </div>
                 {
-                this.props.football_matches.length===1?
-                <MySpinner/> : <List match_list={this.props.football_matches}/>
+                football_matches.length===1?
+                <MySpinner/> : <List match_list={football_matches}/>
                 }
                  <div className="sideContainer footballBackground">
                     
@@ -42,16 +39,10 @@ class FootballPage extends React.Component<Props,State>{
     }
 }
 
-function mapDispatcherToProps(dispatch:Dispatch<Action>){
-    return{
-        fetchFootballMatches:()=>dispatch(fetchFootballMatches())
-    }
-}
-
 function mapStateToProps(state:AppState){
     return{
         football_matches: state.football_matches
     }
 }
 
-export default connect(mapStateToProps,mapDispatcherToProps)(FootballPage);
+export default connect(mapStateToProps,null)(FootballPage);

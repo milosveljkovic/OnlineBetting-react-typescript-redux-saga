@@ -15,3 +15,18 @@ export function updateBasketballMatchOdds(match:Basketball){
     };
     fetch(`${url}/${match.id}`,newMatch);
 }
+
+export function putInitialStateBasketballMatchService(matches:Basketball[]){
+
+    var i=5000 
+    matches.map((match)=>{
+        setTimeout(()=>{
+            const newMatch={
+                method:"PUT",
+                headers:new Headers({'Content-Type':'application/json'}),
+                body: JSON.stringify(match)
+            };
+            fetch(`${url}/${match.id}`,newMatch)}
+            ,i+=500)
+    })
+}

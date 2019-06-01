@@ -1,33 +1,11 @@
 
 import {Action} from 'redux';
 
-import {SHOW_BASKETBALL_MATCHES,IshowBasketballMatches} from '../actions/basketballActions'
+import {SHOW_BASKETBALL_MATCHES,IshowBasketballMatches,SET_BASKETBALL_MATCH_INITIAL_STATE,IsetBasketballMatchInitialState} from '../actions/basketballActions'
 
 import {Basketball} from '../../models/Basketball'
 
-const initialState:Basketball[]=[
-    {
-        id:4,
-        title:"KKCZV-KKP",
-        odds:[
-            {
-                value:1,
-                finalscore:"1",
-                includedodds:false
-            },
-            {
-                value:2,
-                finalscore:"X",
-                includedodds:false
-            },
-            {
-                value:3,
-                finalscore:"2",
-                includedodds:false
-            }
-        ]
-    }
-];
+const initialState:Basketball[]=[];
 
 export function basketballReducer(state:Basketball[]=initialState,action:Action){
     switch(action.type){
@@ -36,6 +14,9 @@ export function basketballReducer(state:Basketball[]=initialState,action:Action)
             const {basketball_matches}=action as IshowBasketballMatches;
             state=[...basketball_matches];
             return [...basketball_matches];
+        case SET_BASKETBALL_MATCH_INITIAL_STATE:
+                const {basketball_matches_is}=action as IsetBasketballMatchInitialState;
+            return [...basketball_matches_is]
         default:
             return state;
     }
