@@ -10,14 +10,14 @@ import {TicketMatch} from '../../models/TicketMatch';
 import { AppState } from '../../store/reducers/rootReducer';
 
 import {updateFootballMatch} from '../../store/actions/footballActions'
-import {postMatchToTicket,deleteMatchFromTicket} from '../../store/actions/ticketActions';
+import {addMatchToTicket,removeMatchFromTicket} from '../../store/actions/ticketActions';
 
 interface Props{
     position:number,
     match:Football,
     updateFootballMatch:Function,
-    postMatchToTicket:Function,
-    deleteMatchFromTicket:Function
+    addMatchToTicket:Function,
+    removeMatchFromTicket:Function
 }
 
 interface State{
@@ -52,12 +52,12 @@ class ButtonOdd extends React.Component<Props,State>{
             var ticketMatch:TicketMatch;
             ticketMatch=this.setTicketMatch(match);
 
-            this.props.postMatchToTicket(ticketMatch);
+            this.props.addMatchToTicket(ticketMatch);
             this.setState({buttonBackground:"#92D67D"});
 
         }else{
             matchVar.odds[position].includedodds=false;
-            this.props.deleteMatchFromTicket(`${match.id}-${match.odds[position].finalscore}`)
+            this.props.removeMatchFromTicket(`${match.id}-${match.odds[position].finalscore}`)
            this.setState({buttonBackground:"#FFFFFF"});
         }
         this.props.updateFootballMatch(matchVar);
@@ -88,16 +88,9 @@ class ButtonOdd extends React.Component<Props,State>{
 function mapDispatcherToProps(dispatch:Dispatch<Action>){
     return{
         updateFootballMatch:(match:Football)=>dispatch(updateFootballMatch(match)),
-        postMatchToTicket:(ticketMatch:TicketMatch)=>dispatch(postMatchToTicket(ticketMatch)),
-        deleteMatchFromTicket:(ticketMatchId:string)=>dispatch(deleteMatchFromTicket(ticketMatchId))
+        addMatchToTicket:(ticketMatch:TicketMatch)=>dispatch(addMatchToTicket(ticketMatch)),
+        removeMatchFromTicket:(ticketMatchId:string)=>dispatch(removeMatchFromTicket(ticketMatchId))
     }
 }
 
-function mapStateToProps(state:AppState){
-    console.log(state);
-    return{
-        football_matches: state.football_matches
-    }
-}
-
-export default connect(mapStateToProps,mapDispatcherToProps)(ButtonOdd);
+export default connect(null,mapDispatcherToProps)(ButtonOdd);

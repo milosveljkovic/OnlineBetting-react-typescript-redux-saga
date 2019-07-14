@@ -3,24 +3,18 @@ import '../../design/myDesign.css'
 import { Container,Row,Col,Button,InputGroup,Form } from 'react-bootstrap';
 
 import React, { Dispatch } from 'react';
-import { Route, Redirect } from 'react-router-dom'
 import { Action } from 'redux';
 import {connect} from 'react-redux';
 
-import {putIntialState} from '../../store/actions/ticketActions'
-import {putFootballMatchInitialState} from '../../store/actions/footballActions'
-import {putBasketballMatchInitialState} from '../../store/actions/basketballActions'
 import {postTicketToMyTickets} from '../../store/actions/myTicketAction'
+import {setTicketIntialState} from '../../store/actions/ticketActions'
+import {fetchFootballMatches} from '../../store/actions/footballActions'
+import {fetchBasketballMatches} from '../../store/actions/basketballActions'
 
 import { createBrowserHistory } from 'history';
-import {withRouter} from 'react-router-dom'
 
 import {TicketMatch} from '../../models/TicketMatch'
-import {Football} from '../../models/Football'
-import {Basketball} from '../../models/Basketball'
 import {MyTickets} from '../../models/MyTickets'
-
-
 
 import {AppState} from '../../store/reducers/rootReducer'
 
@@ -28,28 +22,28 @@ const his=createBrowserHistory();
 
 interface Props{
     ticket:TicketMatch[],
-    football_matches:Football[],
-    basketball_matches:Basketball[],
-    putIntialState:Function,
-    putFootballMatchInitialState:Function,
-    putBasketballMatchInitialState:Function,
-    postTicketToMyTickets:Function
+    postTicketToMyTickets:Function,
+    setTicketIntialState:Function,
+    fetchFootballMatches:Function,
+    fetchBasketballMatches:Function
 }
 
 interface State{
     money:number,
     win:number,
-    ticketName:string
+    ticketName:string,
+    enableError:boolean
 }
 
-class Ticket extends React.Component<Props,State>{
+class Eticket extends React.Component<Props,State>{
 
     constructor(props:Props){
         super(props);
         this.state={
             money:0,
             win:0,
-            ticketName:""
+            ticketName:"",
+            enableError:false
         }
     }
 
@@ -72,7 +66,7 @@ class Ticket extends React.Component<Props,State>{
     }
 
     handleClick=()=>{
-
+        if(this.handleError()){
         var myTicket:MyTickets={
             id:0,
             title:this.state.ticketName,
@@ -80,30 +74,18 @@ class Ticket extends React.Component<Props,State>{
             matches:this.props.ticket
         }
         this.props.postTicketToMyTickets(myTicket);
-
-        
-        this.props.putIntialState(this.props.ticket);
-
-        var football:Football[]=this.props.football_matches
-        football.map((match)=>{
-            match.odds.map((odd)=>{
-                odd.includedodds=false;
-            })
-        })
-        this.props.putFootballMatchInitialState(football);
-
-        var basketball:Basketball[]=this.props.basketball_matches
-        basketball.map((match)=>{
-            match.odds.map((odd)=>{
-                odd.includedodds=false;
-            })
-        })
-        this.props.putBasketballMatchInitialState(basketball);
-
-        this.setState({money:50,win:50})
-        
+        this.props.fetchFootballMatches();
+        this.props.fetchBasketballMatches();
+        this.props.setTicketIntialState();
+    }else{
+        this.setState({enableError:true})
+    }
     }
     
+    handleError=()=>{
+        return (this.state.ticketName.length===0 || this.state.money===0)?false:true
+    }
+
     render(){
         const {money,win,ticketName}=this.state;
         return(
@@ -112,7 +94,15 @@ class Ticket extends React.Component<Props,State>{
                 <div className="sideContainer ticketBackground">
                     
                 </div>
-                <div className="contentContainer " >
+                {
+                    this.props.ticket.length===0?
+                    <div className="contentContainer " >
+                    <Container>
+                        <h4 style={{marginTop:"50px"}}>You have to add some mathes to your ticket.</h4>
+                    </Container>
+                    </div>
+                    :
+                    <div className="contentContainer " >
                     <Container>
                         <h4 style={{marginTop:"50px"}}>Odd: {this.getFinalOdd().toFixed(2)} Win:{win.toFixed(2)} - {ticketName}</h4>
                     </Container>
@@ -140,16 +130,24 @@ class Ticket extends React.Component<Props,State>{
                         }
                     </Container>
                     <Container>
+                        <p></p>
+                        <Form>
+                            <input onChange={this.handleMoneyChange} value={money} name="money" type="number" min="50" step="50" placeholder="50" />
+                            <input onChange={this.handleNameChange} value={ticketName} name="name" type="text"  placeholder="Ticket Name" />
+                        </Form>
+                        {
+                            this.state.enableError?
+                            <p style={{color:"red"}}>Please set a price and ticket name.</p>
+                            :
+                            <p></p>
+                        }
                         <Button variant="secondary" style={{margin:"20px"}} onClick={this.handleClick}>
                             Pay
                         </Button>
-                        <Form>
-                            <input onChange={this.handleMoneyChange} value={money} name="money" type="number" min="50" step="50" placeholder="0" />
-                            <input onChange={this.handleNameChange} value={ticketName} name="name" type="text"  placeholder="Ticket Name" />
-                        </Form>
-                        
                     </Container>
                 </div>
+                }
+                
                 <div className="sideContainer ticketBackground">
                     
                 </div>
@@ -160,20 +158,18 @@ class Ticket extends React.Component<Props,State>{
 
 function mapDispatchToProps(dispatch:Dispatch<Action>){
     return{
-        putIntialState:(tm:TicketMatch[])=>dispatch(putIntialState(tm)),
-        putFootballMatchInitialState:(fm:Football[])=>dispatch(putFootballMatchInitialState(fm)),
-        putBasketballMatchInitialState:(bm:Basketball[])=>dispatch(putBasketballMatchInitialState(bm)),
-        postTicketToMyTickets:(mt:MyTickets)=>dispatch(postTicketToMyTickets(mt))
+        postTicketToMyTickets:(mt:MyTickets)=>dispatch(postTicketToMyTickets(mt)),
+        setTicketIntialState:()=>dispatch(setTicketIntialState()),
+        fetchFootballMatches:()=>dispatch(fetchFootballMatches()),
+        fetchBasketballMatches:()=>dispatch(fetchBasketballMatches())
     }
 }
 
 function mapStateToProps(state:AppState){
     console.log(state);
     return{
-        ticket:state.ticket_matches,
-        football_matches:state.football_matches,
-        basketball_matches:state.basketball_matches
+        ticket:state.ticket_matches
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Ticket);
+export default connect(mapStateToProps,mapDispatchToProps)(Eticket);

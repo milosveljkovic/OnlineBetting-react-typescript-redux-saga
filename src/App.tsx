@@ -12,13 +12,12 @@ import rootReducer from "./store/reducers/rootReducer"
 import FootballPage from './components/SportsPages/FootballPage'
 import BasketballPage from './components/SportsPages/BasketballPage'
 import Navigationbar from './components/Navbar/Navigationbar';
-import Ticket from './components/Ticket/Ticket';
+import Eticket from './components/Ticket/Eticket';
 import MyTicketsPage from './components/Ticket/MyTickets';
 import Home from './components/Home/Home'
 
 import {fetchBasketballMatches} from './store/actions/basketballActions';
 import {fetchFootballMatches} from './store/actions/footballActions';
-import { fetchTicketMatches } from './store/actions/ticketActions';
 import {fetchMyTickets} from './store/actions/myTicketAction'
 
 
@@ -38,20 +37,20 @@ class App extends React.Component {
     {
       store.dispatch(fetchBasketballMatches());
       store.dispatch(fetchFootballMatches());
-      store.dispatch(fetchTicketMatches());
       store.dispatch(fetchMyTickets());
   }
   return (
     <Provider store={store}> 
     <div>
-      <Navigationbar></Navigationbar>
+      
       <BrowserRouter>
+        <Navigationbar></Navigationbar>
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route path="/home" component={Home}/>
           <Route path="/football" component={FootballPage}/>
           <Route path="/basketball" component={BasketballPage}/>
-          <Route path="/ticket" component={Ticket}/>
+          <Route path="/eticket" component={Eticket}/>
           <Route path="/mytickets" component={MyTicketsPage}/>
         </Switch>
       </BrowserRouter>

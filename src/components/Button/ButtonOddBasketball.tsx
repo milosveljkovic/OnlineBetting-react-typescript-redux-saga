@@ -8,14 +8,14 @@ import {Basketball} from '../../models/Basketball';
 import {TicketMatch} from '../../models/TicketMatch';
 
 import {updateBasketballMatch} from '../../store/actions/basketballActions'
-import {postMatchToTicket,deleteMatchFromTicket} from '../../store/actions/ticketActions';
+import {addMatchToTicket,removeMatchFromTicket} from '../../store/actions/ticketActions';
 
 interface Props{
     position:number,
     match:Basketball,
     updateBasketballMatch:Function,
-    postMatchToTicket:Function,
-    deleteMatchFromTicket:Function
+    addMatchToTicket:Function,
+    removeMatchFromTicket:Function
 }
 
 interface State{
@@ -49,12 +49,12 @@ class ButtonOddBasketball extends React.Component<Props,State>{
             var ticketMatch:TicketMatch;
             ticketMatch=this.setTicketMatch(match);
 
-            this.props.postMatchToTicket(ticketMatch);
+            this.props.addMatchToTicket(ticketMatch);
             this.setState({buttonBackground:"#e7874f"});
 
         }else{
             matchVar.odds[position].includedodds=false;
-            this.props.deleteMatchFromTicket(`${match.id}-${match.odds[position].finalscore}`)
+            this.props.removeMatchFromTicket(`${match.id}-${match.odds[position].finalscore}`)
            this.setState({buttonBackground:"#FFFFFF"});
 
         }
@@ -86,8 +86,8 @@ class ButtonOddBasketball extends React.Component<Props,State>{
 function mapDispatcherToProps(dispatch:Dispatch<Action>){
     return{
         updateBasketballMatch:(match:Basketball)=>dispatch(updateBasketballMatch(match)),
-        postMatchToTicket:(ticketMatch:TicketMatch)=>dispatch(postMatchToTicket(ticketMatch)),
-        deleteMatchFromTicket:(ticketMatchId:string)=>dispatch(deleteMatchFromTicket(ticketMatchId)),
+        addMatchToTicket:(ticketMatch:TicketMatch)=>dispatch(addMatchToTicket(ticketMatch)),
+        removeMatchFromTicket:(ticketMatchId:string)=>dispatch(removeMatchFromTicket(ticketMatchId)),
     }
 }
 export default connect(null,mapDispatcherToProps)(ButtonOddBasketball);

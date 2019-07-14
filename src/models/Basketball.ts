@@ -8,16 +8,6 @@ export interface Basketball {
             value:number,
             finalscore:string,
             includedodds:boolean
-        },
-        {
-            value:number,
-            finalscore:string,
-            includedodds:boolean
-        },
-        {
-            value:number,
-            finalscore:string,
-            includedodds:boolean
         }
     ]
 }

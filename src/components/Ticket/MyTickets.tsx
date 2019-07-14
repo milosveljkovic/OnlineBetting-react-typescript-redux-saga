@@ -29,7 +29,7 @@ class MyTicketsPage extends React.Component<Props,State>{
                             this.props.mytickets.map((tickets)=>{
                             return (
                                 <div key={tickets.id} className="dataContainerTickectShadow dataContainer">
-                                    <h5>{tickets.title} | {tickets.win.toFixed(2)} rsd</h5>
+                                    <h5>{tickets.title} | Win {tickets.win.toFixed(2)} RSD</h5>
                                     <Container>
                                     {  
                                         tickets.matches.map((ticketMatch)=>{
@@ -53,6 +53,7 @@ class MyTicketsPage extends React.Component<Props,State>{
                                         })
                                     }
                                     </Container>
+                                    <p>-</p>
                                 </div>
                             )
                         })

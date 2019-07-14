@@ -1,5 +1,6 @@
 import {Nav,Navbar,NavDropdown} from 'react-bootstrap';
 import React  from 'react';
+import {NavLink} from 'react-router-dom'
 
 class Navigationbar extends React.Component{
     render(){
@@ -7,13 +8,13 @@ class Navigationbar extends React.Component{
             <div>
                 <Navbar fixed="top" bg="dark" variant="dark">
                     <Nav className="mr-auto">
-                        <Nav.Link href="home">Home</Nav.Link>
+                        <Nav.Link to="/home" as={NavLink}>Home</Nav.Link>
                         <NavDropdown title="Sports" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="/football" >Football</NavDropdown.Item>
-                            <NavDropdown.Item href="/basketball" >Basketball</NavDropdown.Item>
+                            <NavDropdown.Item to="/football" as={NavLink}>Football</NavDropdown.Item>
+                            <NavDropdown.Item to="/basketball" as={NavLink}>Basketball</NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link href="ticket">My Ticket</Nav.Link>
-                        <Nav.Link href="mytickets">My Ticket</Nav.Link>
+                        <Nav.Link to="/eticket" as={NavLink}>E-Ticket</Nav.Link>
+                        <Nav.Link to="/mytickets" as={NavLink}>My Tickets</Nav.Link>
                     </Nav>
                 </Navbar>
             </div>
