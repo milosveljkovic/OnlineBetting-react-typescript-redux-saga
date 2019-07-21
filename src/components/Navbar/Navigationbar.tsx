@@ -15,6 +15,7 @@ class Navigationbar extends React.Component{
                         </NavDropdown>
                         <Nav.Link to="/eticket" as={NavLink}>E-Ticket</Nav.Link>
                         <Nav.Link to="/mytickets" as={NavLink}>My Tickets</Nav.Link>
+                        <Nav.Link to="/login" as={NavLink}>Login</Nav.Link>
                     </Nav>
                 </Navbar>
             </div>

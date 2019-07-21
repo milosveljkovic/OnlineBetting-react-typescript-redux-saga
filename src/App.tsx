@@ -20,6 +20,7 @@ import {fetchBasketballMatches} from './store/actions/basketballActions';
 import {fetchFootballMatches} from './store/actions/footballActions';
 import {fetchMyTickets} from './store/actions/myTicketAction'
 
+import routes from './routes'
 
 const sagaMiddleware=createSagaMiddleware();
 
@@ -32,6 +33,18 @@ sagaMiddleware.run(rootSaga)
 
 
 class App extends React.Component {
+
+  getRoutes = (routes:any) =>{
+    return routes.map((prop:any, key:any) => {
+        return (
+          <Route path={prop.path}
+            component={prop.component}
+            key={key}
+          />
+        );
+    });
+  }
+
 
   render(){
     {
@@ -47,11 +60,9 @@ class App extends React.Component {
         <Navigationbar></Navigationbar>
         <Switch>
           <Route exact path="/" component={Home}/>
-          <Route path="/home" component={Home}/>
-          <Route path="/football" component={FootballPage}/>
-          <Route path="/basketball" component={BasketballPage}/>
-          <Route path="/eticket" component={Eticket}/>
-          <Route path="/mytickets" component={MyTicketsPage}/>
+          {
+            this.getRoutes(routes)
+          }
         </Switch>
       </BrowserRouter>
     </div>
