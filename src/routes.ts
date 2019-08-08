@@ -4,6 +4,8 @@ import BasketballPage from "./components/SportsPages/BasketballPage"
 import Eticket from "./components/Ticket/Eticket"
 import MyTicketPage from "./components/Ticket/MyTickets"
 import Login from "./components/Auth/Login"
+import Registration from "./components/Auth/Registration";
+import AddCredit from "./components/Credit/AddCredit"
 
 var routes= [
     {
@@ -15,6 +17,11 @@ var routes= [
         path: "/login",
         name: "Login",
         component: Login,
+    },
+    {
+        path: "/registration",
+        name: "Registration",
+        component: Registration
     },
     {
         path: "/football",
@@ -35,6 +42,11 @@ var routes= [
         path: "/mytickets",
         name: "MyTicketPage",
         component: MyTicketPage,
+    },
+    {
+        path: "/addcredit",
+        name: "AddCredit",
+        component: AddCredit,
     },
     {
         path: "/",

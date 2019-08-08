@@ -10,22 +10,27 @@ import {postTicketToMyTickets} from '../../store/actions/myTicketAction'
 import {setTicketIntialState} from '../../store/actions/ticketActions'
 import {fetchFootballMatches} from '../../store/actions/footballActions'
 import {fetchBasketballMatches} from '../../store/actions/basketballActions'
+import {updateUser} from '../../store/actions/userAction'
 
 import { createBrowserHistory } from 'history';
 
 import {TicketMatch} from '../../models/TicketMatch'
 import {MyTickets} from '../../models/MyTickets'
+import {User} from '../../models/User'
 
 import {AppState} from '../../store/reducers/rootReducer'
+import {Redirect} from 'react-router-dom'
 
 const his=createBrowserHistory();
 
 interface Props{
     ticket:TicketMatch[],
+    user:User,
     postTicketToMyTickets:Function,
     setTicketIntialState:Function,
     fetchFootballMatches:Function,
-    fetchBasketballMatches:Function
+    fetchBasketballMatches:Function,
+    updateUser:Function
 }
 
 interface State{
@@ -69,11 +74,17 @@ class Eticket extends React.Component<Props,State>{
         if(this.handleError()){
         var myTicket:MyTickets={
             id:0,
+            userId:this.props.user.id,
             title:this.state.ticketName,
             win:this.state.win,
             matches:this.props.ticket
         }
         this.props.postTicketToMyTickets(myTicket);
+
+        var updatedUser:User=this.props.user;
+        updatedUser.credit-=this.state.money;
+        this.props.updateUser(updatedUser);
+
         this.props.fetchFootballMatches();
         this.props.fetchBasketballMatches();
         this.props.setTicketIntialState();
@@ -87,18 +98,28 @@ class Eticket extends React.Component<Props,State>{
     }
 
     render(){
+
         const {money,win,ticketName}=this.state;
+        const {user} = this.props;
+
+        if(!localStorage.getItem("LoggedSuccess")) return <Redirect to="/login" />
+
         return(
             <div className="main">
-                <h1 className="pageTitle ticketBackground" >E - Ticket</h1>
+                <h1 className="pageTitle ticketBackground" >
+                    E - Ticket
+                </h1>
+                <h4 className="ticketBackground" style={{ color: "#ffffff",fontFamily: "Arial, Helvetica, sans-serif",marginBottom:"1px"}}>
+                    Available credit: {user.credit}
+                </h4>
                 <div className="sideContainer ticketBackground">
-                    
+                
                 </div>
                 {
                     this.props.ticket.length===0?
                     <div className="contentContainer " >
                     <Container>
-                        <h4 style={{marginTop:"50px"}}>You have to add some mathes to your ticket.</h4>
+                        <h4 style={{marginTop:"50px"}}>You have to add some matches to your ticket.</h4>
                     </Container>
                     </div>
                     :
@@ -132,7 +153,7 @@ class Eticket extends React.Component<Props,State>{
                     <Container>
                         <p></p>
                         <Form>
-                            <input onChange={this.handleMoneyChange} value={money} name="money" type="number" min="50" step="50" placeholder="50" />
+                            <input onChange={this.handleMoneyChange} value={money} name="money" type="number" min="50" max={this.props.user.credit} step="50" placeholder="50" />
                             <input onChange={this.handleNameChange} value={ticketName} name="name" type="text"  placeholder="Ticket Name" />
                         </Form>
                         {
@@ -141,9 +162,15 @@ class Eticket extends React.Component<Props,State>{
                             :
                             <p></p>
                         }
-                        <Button variant="secondary" style={{margin:"20px"}} onClick={this.handleClick}>
-                            Pay
-                        </Button>
+                        {
+                            this.props.user.credit<50?
+                            <p style={{color:"red"}}>*Please add credit.*</p>
+                            :
+                            <Button variant="secondary" style={{margin:"20px"}} onClick={this.handleClick}>
+                                Pay
+                            </Button>
+                        }
+                        
                     </Container>
                 </div>
                 }
@@ -158,17 +185,19 @@ class Eticket extends React.Component<Props,State>{
 
 function mapDispatchToProps(dispatch:Dispatch<Action>){
     return{
-        postTicketToMyTickets:(mt:MyTickets)=>dispatch(postTicketToMyTickets(mt)),
+        postTicketToMyTickets:(myticket:MyTickets)=>dispatch(postTicketToMyTickets(myticket)),
         setTicketIntialState:()=>dispatch(setTicketIntialState()),
         fetchFootballMatches:()=>dispatch(fetchFootballMatches()),
-        fetchBasketballMatches:()=>dispatch(fetchBasketballMatches())
+        fetchBasketballMatches:()=>dispatch(fetchBasketballMatches()),
+        updateUser:(user:User)=>dispatch(updateUser(user))
     }
 }
 
 function mapStateToProps(state:AppState){
     console.log(state);
     return{
-        ticket:state.ticket_matches
+        ticket:state.ticket_matches,
+        user:state.user
     }
 }
 

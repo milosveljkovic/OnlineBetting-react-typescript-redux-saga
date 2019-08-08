@@ -12,7 +12,7 @@ export function postTicketToMyTicketService(ticket:MyTickets){
     return fetch(url,newTicketMatch).then((response)=>response.json())
 }
 
-export function fetchMyTicketsService(){
-    return fetch(url)
+export function fetchMyTicketsService(userId:number){
+    return fetch(`${url}?userId=${userId}`)
     .then(response=>response.json());
 }

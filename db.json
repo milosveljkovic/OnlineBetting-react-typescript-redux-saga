@@ -1,4 +1,27 @@
 {
+  "users": [
+    {
+      "id": 1,
+      "email": "admin",
+      "password": "admin",
+      "userOrAdmin": "admin"
+    },
+    {
+      "id": 2,
+      "email": "milosveljko@gmail.com",
+      "password": "milosveljko",
+      "credit": 300,
+      "userOrAdmin": "user",
+      "usermatches": []
+    },
+    {
+      "id": 3,
+      "email": "acainformacija@gmail.com",
+      "password": "acainfo",
+      "credit": 500,
+      "userOrAdmin": "user"
+    }
+  ],
   "football": [
     {
       "id": 1,

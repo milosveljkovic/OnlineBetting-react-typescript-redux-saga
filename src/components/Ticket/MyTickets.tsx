@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { AppState } from '../../store/reducers/rootReducer';
 import {MyTickets} from '../../models/MyTickets'
 
+import {Redirect} from 'react-router-dom';
+
 interface Props{
     mytickets:MyTickets[]
 }
@@ -17,6 +19,9 @@ interface State{
 class MyTicketsPage extends React.Component<Props,State>{
 
     render(){
+
+        if(!localStorage.getItem("LoggedSuccess")) return <Redirect to="/login" />
+
         return(
             <div className="main">
                 <h1 className="pageTitle ticketBackground" >My - Tickets</h1>

@@ -73,3 +73,13 @@
   .basketballBackground{
   background-color: #e7874f;
   }
+
+  .inputControl{
+  width: 70%;
+  padding: 5px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  }

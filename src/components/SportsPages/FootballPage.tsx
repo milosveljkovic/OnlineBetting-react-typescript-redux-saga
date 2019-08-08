@@ -6,6 +6,7 @@ import '../../design/myDesign.css';
 import {Football} from '../../models/Football';
 import {MySpinner} from '../Spinner/Spinner';
 import List from '../ListOfMatches/List'
+import {Redirect} from 'react-router-dom';
 
 interface Props{
     football_matches:Football[]
@@ -20,6 +21,8 @@ class FootballPage extends React.Component<Props,State>{
     render(){
 
         const {football_matches}=this.props;
+
+        if(!localStorage.getItem("LoggedSuccess")) return <Redirect to="/login" />
 
         return(
             <div className="main">

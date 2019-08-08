@@ -1,4 +1,62 @@
 {
   "mytickets": [
+    {
+      "id": 1,
+      "userId": 2,
+      "title": "Test",
+      "win": 1178,
+      "matches": [
+        {
+          "id": "1-1",
+          "title": "Roma - Porto",
+          "finalscore": "1",
+          "odd": 1.9
+        },
+        {
+          "id": "2-1",
+          "title": "Manchester United - Paris",
+          "finalscore": "1",
+          "odd": 3.1
+        },
+        {
+          "id": "3-X",
+          "title": "Tottenham - Dortmund",
+          "finalscore": "X",
+          "odd": 2
+        }
       ]
+    },
+    {
+      "id": 2,
+      "userId": 3,
+      "title": "Ticket1",
+      "win": 3429.3079999999995,
+      "matches": [
+        {
+          "id": "11-1",
+          "title": "Charlotte - Dallas",
+          "finalscore": "1",
+          "odd": 1.85
+        },
+        {
+          "id": "17-1",
+          "title": "Torronto - Philadelphia",
+          "finalscore": "1",
+          "odd": 1.7
+        },
+        {
+          "id": "5-1",
+          "title": "Ajax - Real",
+          "finalscore": "1",
+          "odd": 2.9
+        },
+        {
+          "id": "7-2",
+          "title": "Atletico - Juventus",
+          "finalscore": "2",
+          "odd": 1.88
+        }
+      ]
+    }
+  ]
 }

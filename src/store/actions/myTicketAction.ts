@@ -20,6 +20,7 @@ export interface IshowMyTickets extends Action{
 }
 
 export interface IfetchMyTickets extends Action{
+    userId:number
 }
 
 export function postTicketToMyTickets(myTicket:MyTickets):IpostTicketToMyTickets{
@@ -43,8 +44,9 @@ export function showMyTickets(myTickets:MyTickets[]):IshowMyTickets{
     }
 }
 
-export function fetchMyTickets():IfetchMyTickets{
+export function fetchMyTickets(userId:number):IfetchMyTickets{
     return{
         type:FETCH_MYTICKETS,
+        userId:userId
     }
 }

@@ -1,10 +1,11 @@
 import './App.css';
 
-import React from 'react';
+import React ,{Dispatch} from 'react';
+import { Action } from 'redux';
 import {createStore, applyMiddleware} from 'redux';
-import {Provider} from 'react-redux';
+import {Provider,connect} from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
-import {Switch,BrowserRouter,Route} from 'react-router-dom';
+import {Switch,BrowserRouter,Route,Router} from 'react-router-dom';
 import {rootSaga} from './store/sagas/rootSaga';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
@@ -18,9 +19,10 @@ import Home from './components/Home/Home'
 
 import {fetchBasketballMatches} from './store/actions/basketballActions';
 import {fetchFootballMatches} from './store/actions/footballActions';
-import {fetchMyTickets} from './store/actions/myTicketAction'
+import {getUserById} from './store/actions/userAction'
 
 import routes from './routes'
+import history from './history';
 
 const sagaMiddleware=createSagaMiddleware();
 
@@ -30,7 +32,6 @@ const store=createStore(
   );
 
 sagaMiddleware.run(rootSaga)
-
 
 class App extends React.Component {
 
@@ -50,13 +51,15 @@ class App extends React.Component {
     {
       store.dispatch(fetchBasketballMatches());
       store.dispatch(fetchFootballMatches());
-      store.dispatch(fetchMyTickets());
-  }
+      if(localStorage.getItem("LoggedSuccess")==="true"){
+        store.dispatch(getUserById(Number(localStorage.getItem("UserId"))));
+      }
+    }
   return (
     <Provider store={store}> 
     <div>
       
-      <BrowserRouter>
+      <Router history={history}>
         <Navigationbar></Navigationbar>
         <Switch>
           <Route exact path="/" component={Home}/>
@@ -64,7 +67,7 @@ class App extends React.Component {
             this.getRoutes(routes)
           }
         </Switch>
-      </BrowserRouter>
+      </Router>
     </div>
     </Provider>
   );

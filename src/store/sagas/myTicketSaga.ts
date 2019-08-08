@@ -1,6 +1,6 @@
 import {put} from 'redux-saga/effects';
 
-import {IpostTicketToMyTickets, updateMyTickets, showMyTickets} from '../actions/myTicketAction'
+import {IpostTicketToMyTickets, updateMyTickets, showMyTickets,IfetchMyTickets} from '../actions/myTicketAction'
 import {postTicketToMyTicketService,fetchMyTicketsService} from '../../services/myticket-service'
 
 export function* postTicketToMyTickets(ticket:IpostTicketToMyTickets){  
@@ -8,7 +8,7 @@ export function* postTicketToMyTickets(ticket:IpostTicketToMyTickets){
     yield put(updateMyTickets(myTicket));
 }
 
-export function* fetchMyTickets(){  
-    const myTickets=yield fetchMyTicketsService();
+export function* fetchMyTickets(user:IfetchMyTickets){  
+    const myTickets=yield fetchMyTicketsService(user.userId);
     yield put(showMyTickets(myTickets));
 }
