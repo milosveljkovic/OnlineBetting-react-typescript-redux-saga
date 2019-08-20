@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../design/myDesign.css'
-import { Container,Row,Col,Button,InputGroup,Form } from 'react-bootstrap';
+import { Container,Row,Col} from 'react-bootstrap';
 
 import { connect } from 'react-redux';
 import { AppState } from '../../store/reducers/rootReducer';

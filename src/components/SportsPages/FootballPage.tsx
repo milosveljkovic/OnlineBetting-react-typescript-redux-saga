@@ -1,5 +1,4 @@
-import React ,{Dispatch} from 'react';
-import {Action } from 'redux';
+import React from 'react';
 import {connect} from 'react-redux';
 import {AppState} from '../../store/reducers/rootReducer';
 import '../../design/myDesign.css';

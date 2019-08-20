@@ -1,14 +1,16 @@
 import React ,{Dispatch} from 'react';
 import { Action } from 'redux';
-import { Container,Row,Col,Button,Form } from 'react-bootstrap';
+import { Container,Button,Form } from 'react-bootstrap';
 import {connect} from 'react-redux'
 import {getUserByIdService} from '../../services/user-service'
 import {User} from '../../models/User'
+import {AppState} from '../../store/reducers/rootReducer'
 import {updateUser} from '../../store/actions/userAction'
 import {Redirect} from 'react-router-dom'
 
 interface Props{
-    updateUser:Function
+    updateUser:Function,
+    user:User
 }
 
 interface State{
@@ -75,7 +77,9 @@ class AddCredit extends React.Component<Props,State>{
 
         const {userId,credit,wrongId,success}=this.state;
 
-        if(!localStorage.getItem("LoggedSuccess")) return <Redirect to="/login" />
+        if(this.props.user.userOrAdmin==="user"){return <Redirect to="/home" /> }
+
+        if(!localStorage.getItem("LoggedSuccess")) { return <Redirect to="/login" />}
 
         return(
             <div className="main">
@@ -127,10 +131,16 @@ class AddCredit extends React.Component<Props,State>{
     }
 }
 
+function mapStateToProps(state:AppState){
+    return{
+        user:state.user
+    }
+}
+
 function mapDispatchToProps(dispatch:Dispatch<Action>){
     return{
         updateUser:(user:User)=>dispatch(updateUser(user))
     }
 }
 
-export default connect(null,mapDispatchToProps)(AddCredit);
+export default connect(mapStateToProps,mapDispatchToProps)(AddCredit);

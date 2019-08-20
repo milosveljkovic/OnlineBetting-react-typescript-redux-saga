@@ -1,20 +1,15 @@
 import './App.css';
 
-import React ,{Dispatch} from 'react';
-import { Action } from 'redux';
+import React from 'react';
 import {createStore, applyMiddleware} from 'redux';
-import {Provider,connect} from 'react-redux';
+import {Provider} from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
-import {Switch,BrowserRouter,Route,Router} from 'react-router-dom';
+import {Switch,Route,Router} from 'react-router-dom';
 import {rootSaga} from './store/sagas/rootSaga';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootReducer from "./store/reducers/rootReducer"
-import FootballPage from './components/SportsPages/FootballPage'
-import BasketballPage from './components/SportsPages/BasketballPage'
 import Navigationbar from './components/Navbar/Navigationbar';
-import Eticket from './components/Ticket/Eticket';
-import MyTicketsPage from './components/Ticket/MyTickets';
 import Home from './components/Home/Home'
 
 import {fetchBasketballMatches} from './store/actions/basketballActions';
@@ -48,13 +43,13 @@ class App extends React.Component {
 
 
   render(){
-    {
-      store.dispatch(fetchBasketballMatches());
-      store.dispatch(fetchFootballMatches());
-      if(localStorage.getItem("LoggedSuccess")==="true"){
-        store.dispatch(getUserById(Number(localStorage.getItem("UserId"))));
-      }
+    
+    store.dispatch(fetchBasketballMatches());
+    store.dispatch(fetchFootballMatches());
+    if(localStorage.getItem("LoggedSuccess")==="true"){
+      store.dispatch(getUserById(Number(localStorage.getItem("UserId"))));
     }
+    
   return (
     <Provider store={store}> 
     <div>

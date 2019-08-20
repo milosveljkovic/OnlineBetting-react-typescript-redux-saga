@@ -18,12 +18,12 @@ class Home extends React.Component<Props,State>{
 
     render(){
 
-        {
-            if(this.props.user.userOrAdmin==="user"){
-                this.props.fetchMyTickets(this.props.user.id);
-                localStorage.setItem("UserId", this.props.user.id.toString());                
-            }
+        
+        if(this.props.user.userOrAdmin==="user"){
+            this.props.fetchMyTickets(this.props.user.id);
+            localStorage.setItem("UserId", this.props.user.id.toString());                
         }
+        
 
         return(
             <div className="main">

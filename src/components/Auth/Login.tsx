@@ -15,7 +15,8 @@ interface Props{
 
 interface State{
     email:string,
-    password:string
+    password:string,
+    error:boolean
 }
 
 class Login extends React.Component<Props,State>{
@@ -24,13 +25,12 @@ class Login extends React.Component<Props,State>{
         super(props);
         this.state={
             email:"",
-            password:""
+            password:"",
+            error:false
         }
     }
 
     handleSubmit=()=>{
-        //handle error
-        //call service
         getUserWithEmailAndPassword(this.state.email,this.state.password)
         .then(user=>{
             if(user[0]){ 
@@ -40,7 +40,7 @@ class Login extends React.Component<Props,State>{
                 this.props.setUser(user[0]);
                 history.push('/home');
         }else{
-                //error handle
+                this.setState({error:true})
         }
         });
     }
@@ -54,7 +54,7 @@ class Login extends React.Component<Props,State>{
     }
 
     render(){
-        const {email, password} = this.state;
+        const {email, password,error} = this.state;
 
         if(localStorage.getItem("LoggedSuccess")) return <Redirect to="/home" />
 
@@ -64,7 +64,7 @@ class Login extends React.Component<Props,State>{
                     
                 </div>
                 <div className="contentContainer">
-                    <Form>
+                    <Form style={{backgroundColor:"#e3e3e3",borderRadius: "5px"}}>
 
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
@@ -82,6 +82,12 @@ class Login extends React.Component<Props,State>{
                     <Button variant="primary" onClick={this.handleSubmit}>
                         Submit
                     </Button>
+                    {
+                        error?
+                        <p style={{color:"#cc3300", marginTop:"10px"}}>Incorrect email or password. Try again!</p>
+                        :
+                        <p></p>
+                    }
                 </div>
                 <div className="sideContainer ">
                     

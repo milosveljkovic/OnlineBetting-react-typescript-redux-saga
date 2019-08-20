@@ -1,6 +1,6 @@
 import '../../design/myDesign.css'
 
-import { Container,Row,Col,Button,InputGroup,Form } from 'react-bootstrap';
+import { Container,Row,Col,Button,Form } from 'react-bootstrap';
 
 import React, { Dispatch } from 'react';
 import { Action } from 'redux';
@@ -12,16 +12,12 @@ import {fetchFootballMatches} from '../../store/actions/footballActions'
 import {fetchBasketballMatches} from '../../store/actions/basketballActions'
 import {updateUser} from '../../store/actions/userAction'
 
-import { createBrowserHistory } from 'history';
-
 import {TicketMatch} from '../../models/TicketMatch'
 import {MyTickets} from '../../models/MyTickets'
 import {User} from '../../models/User'
 
 import {AppState} from '../../store/reducers/rootReducer'
 import {Redirect} from 'react-router-dom'
-
-const his=createBrowserHistory();
 
 interface Props{
     ticket:TicketMatch[],
@@ -110,7 +106,7 @@ class Eticket extends React.Component<Props,State>{
                     E - Ticket
                 </h1>
                 <h4 className="ticketBackground" style={{ color: "#ffffff",fontFamily: "Arial, Helvetica, sans-serif",marginBottom:"1px"}}>
-                    Available credit: {user.credit}
+                    Available credit: {user.credit} | User id:{user.id}
                 </h4>
                 <div className="sideContainer ticketBackground">
                 

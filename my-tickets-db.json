@@ -57,6 +57,58 @@
           "odd": 1.88
         }
       ]
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "title": "Drugi tiket",
+      "win": 2240,
+      "matches": [
+        {
+          "id": "4-1",
+          "title": "Lyon - Barcelona",
+          "finalscore": "1",
+          "odd": 5.6
+        },
+        {
+          "id": "5-X",
+          "title": "Ajax - Real",
+          "finalscore": "X",
+          "odd": 2
+        },
+        {
+          "id": "6-2",
+          "title": "Liverpool - Bayern",
+          "finalscore": "2",
+          "odd": 2
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "userId": 5,
+      "title": "Ohrid",
+      "win": 1006.4000000000002,
+      "matches": [
+        {
+          "id": "8-1",
+          "title": "Denver - Brooklyn",
+          "finalscore": "1",
+          "odd": 3.2
+        },
+        {
+          "id": "11-1",
+          "title": "Charlotte - Dallas",
+          "finalscore": "1",
+          "odd": 1.85
+        },
+        {
+          "id": "17-1",
+          "title": "Torronto - Philadelphia",
+          "finalscore": "1",
+          "odd": 1.7
+        }
+      ]
     }
   ]
 }

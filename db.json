@@ -10,7 +10,7 @@
       "id": 2,
       "email": "milosveljko@gmail.com",
       "password": "milosveljko",
-      "credit": 300,
+      "credit": 200,
       "userOrAdmin": "user",
       "usermatches": []
     },
@@ -18,6 +18,20 @@
       "id": 3,
       "email": "acainformacija@gmail.com",
       "password": "acainfo",
+      "credit": 800,
+      "userOrAdmin": "user"
+    },
+    {
+      "id": 4,
+      "email": "jankotrickovic@gmail.com",
+      "password": "janepro",
+      "credit": 600,
+      "userOrAdmin": "user"
+    },
+    {
+      "id": 5,
+      "email": "milica@gmail.com",
+      "password": "milica",
       "credit": 500,
       "userOrAdmin": "user"
     }

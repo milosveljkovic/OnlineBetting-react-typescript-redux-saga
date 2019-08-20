@@ -7,7 +7,6 @@ import {connect} from 'react-redux';
 import { Button } from 'react-bootstrap';
 import {Football} from '../../models/Football';
 import {TicketMatch} from '../../models/TicketMatch';
-import { AppState } from '../../store/reducers/rootReducer';
 
 import {updateFootballMatch} from '../../store/actions/footballActions'
 import {addMatchToTicket,removeMatchFromTicket} from '../../store/actions/ticketActions';
