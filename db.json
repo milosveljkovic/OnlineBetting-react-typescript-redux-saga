@@ -10,9 +10,8 @@
       "id": 2,
       "email": "milosveljko@gmail.com",
       "password": "milosveljko",
-      "credit": 200,
-      "userOrAdmin": "user",
-      "usermatches": []
+      "credit": 350,
+      "userOrAdmin": "user"
     },
     {
       "id": 3,
